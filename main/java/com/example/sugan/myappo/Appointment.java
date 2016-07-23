@@ -127,4 +127,21 @@ public class Appointment {
     public void setTime(String time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment {" +
+                "\n Name : " + name +
+                "\n Last Name : " + lastName +
+                "\n Gender : " + gender +
+                "\n Street : " + street +
+                "\n City : " + city +
+                "\n ZipCode : " + zipCode +
+                "\n Country : " + country +
+                "\n Phone : " + phone +
+                "\n Email : " + email +
+                "\n Date : " + date +
+                "\n Time : " + time +
+                "\n}";
+    }
 }

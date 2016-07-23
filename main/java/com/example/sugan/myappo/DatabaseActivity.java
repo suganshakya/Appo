@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
@@ -24,7 +24,7 @@ public class DatabaseActivity extends AppCompatActivity {
     EditText nameET, surnameET;
     Button deleteButton, addButton, showButton;
 
-    TextView dbTextView;
+    TableLayout tableLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +43,8 @@ public class DatabaseActivity extends AppCompatActivity {
         surnameET = (EditText) findViewById(R.id.surname_editText2);
         addButton = (Button) findViewById(R.id.add_db_button);
         showButton = (Button) findViewById(R.id.show_db_button);
-        dbTextView = (TextView) findViewById(R.id.db_textView);
         deleteButton = (Button) findViewById(R.id.delete_db_button);
-//        tableLayout = (TableLayout) findViewById(R.id.db_table_layout);
+        tableLayout = (TableLayout) findViewById(R.id.db_table_layout);
     }
 
 
@@ -89,13 +88,12 @@ public class DatabaseActivity extends AppCompatActivity {
         }
 
 
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.db_table_layout);
         tableLayout.removeAllViewsInLayout();   // erase previous results
         tableLayout.setStretchAllColumns(true);
         tableLayout.setShrinkAllColumns(true);
         TableRow headRow = new TableRow(this);
 
-        headRow.setBackgroundColor(Color.rgb(200, 200, 200));
+        headRow.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorTableRowHead));
         headRow.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT)
         );
@@ -119,7 +117,9 @@ public class DatabaseActivity extends AppCompatActivity {
             do {
                 TableRow tablerow = new TableRow(this);
                 if (count % 2 == 0) {
-                    tablerow.setBackgroundColor(Color.rgb(240, 240, 240));
+                    tablerow.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorTableRowEven));
+                } else {
+                    tablerow.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorTableRowOdd));
                 }
                 count++;
                 tablerow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));

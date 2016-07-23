@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">MyAppo</string>
+    <string name="app_name">Appointment</string>
     <string name="personal_info">Personal Information</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="create_fragment">Create</string>
+    <string name="view_fragment">View</string>
+    <string name="edit_fragment">Edit</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

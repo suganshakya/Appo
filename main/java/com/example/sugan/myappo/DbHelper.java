@@ -9,11 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by sugan on 20/07/16.
  */
 public class DbHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "Appointment1.db";
+
+    private static DbHelper dbHelper;
+
+    public static final String DATABASE_NAME = "appointment.db";
     public static final int DATABASE_VERSION = 1;
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA = ",";
+
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + AppointmentContract.FeedEntry.TABLE_NAME + " (" +
                     AppointmentContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
@@ -34,8 +38,16 @@ public class DbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + AppointmentContract.FeedEntry.TABLE_NAME;
 
 
+
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static synchronized DbHelper getInstance(Context context){
+        if(dbHelper == null){
+            dbHelper = new DbHelper(context.getApplicationContext());
+        }
+        return dbHelper;
     }
 
     @Override
