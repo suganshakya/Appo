@@ -119,7 +119,9 @@ public class ConfirmDataDialogFragment extends DialogFragment {
     }
 
     public void addToDatabase() {
-        DbHelper appointDbHelper = new DbHelper(getContext());
+//        DbHelper appointDbHelper = DbHelper.getInstance(getContext());
+        DbHelper appointDbHelper = new DbHelper(getActivity().getApplicationContext());
+
         SQLiteDatabase db = appointDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_ENTRY_ID, appointment.get_id());
@@ -135,5 +137,6 @@ public class ConfirmDataDialogFragment extends DialogFragment {
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_TIME, appointment.getTime());
         long newRowId = db.insert(AppointmentContract.FeedEntry.TABLE_NAME, null, values);
         Toast.makeText(this.getContext(), "Data added", Toast.LENGTH_SHORT).show();
+        db.close();
     }
 }

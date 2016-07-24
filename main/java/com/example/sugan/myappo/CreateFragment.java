@@ -175,34 +175,23 @@ public class CreateFragment extends Fragment {
     }
 
     public void confirmData() {
-//        String text = "Appointment request from " +
-//                "\n Name: " + nameET.getText().toString() +
-//                "\n Surname: " + surnameET.getText().toString() +
-//                "\n Street: " + streetET.getText().toString() +
-//                "\n City: " + cityET.getText().toString() +
-//                "\n Zip Code: " + zipET.getText().toString() +
-//                "\n Country: " + countrySpinner.getSelectedItem().toString() +
-//                "\n Phone:" + phoneET.getText().toString() +
-//                "\n Email: " + emailET.getText().toString() +
-//                "\n Date: " + dateET.getText().toString() +
-//                "\n Time:" + timeET.getText().toString();
 
-appointment = new Appointment(1, nameET.getText().toString(),
-        surnameET.getText().toString(),
-        gender,
-        streetET.getText().toString(),
-        cityET.getText().toString(),
-        zipET.getText().toString(),
-        countrySpinner.getSelectedItem().toString(),
-        phoneET.getText().toString(),
-        emailET.getText().toString(),
-        dateET.getText().toString(),
-        timeET.getText().toString()
+        appointment = new Appointment(1, nameET.getText().toString(),
+                surnameET.getText().toString(),
+                gender,
+                streetET.getText().toString(),
+                cityET.getText().toString(),
+                zipET.getText().toString(),
+                countrySpinner.getSelectedItem().toString(),
+                phoneET.getText().toString(),
+                emailET.getText().toString(),
+                dateET.getText().toString(),
+                timeET.getText().toString()
         );
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if(prev!=null){
+        if (prev != null) {
             ft.remove(prev);
         }
         ft.addToBackStack(null);

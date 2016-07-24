@@ -20,7 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + AppointmentContract.FeedEntry.TABLE_NAME + " (" +
-                    AppointmentContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
+                    AppointmentContract.FeedEntry._ID + " INTEGER PRIMARY KEY, " +
                     AppointmentContract.FeedEntry.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_LASTNAME + TEXT_TYPE + COMMA +
@@ -34,21 +34,20 @@ public class DbHelper extends SQLiteOpenHelper {
                     AppointmentContract.FeedEntry.COLUMN_NAME_DATE + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_TIME + TEXT_TYPE +
                     " )";
+
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + AppointmentContract.FeedEntry.TABLE_NAME;
-
-
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static synchronized DbHelper getInstance(Context context){
-        if(dbHelper == null){
-            dbHelper = new DbHelper(context.getApplicationContext());
-        }
-        return dbHelper;
-    }
+//    public static synchronized DbHelper getInstance(Context context){
+//        if(dbHelper == null){
+//            dbHelper = new DbHelper(context);
+//        }
+//        return dbHelper;
+//    }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
