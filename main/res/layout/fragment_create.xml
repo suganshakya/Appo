@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sugan.myappo.CreateFragment">
+    tools:context=".CreateFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +20,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/Name_of_person"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -45,11 +44,10 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/surName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Last Name"
+                    android:text="Surname"
                     android:textColor="#111111"
                     android:textSize="@dimen/text_height" />
 
@@ -70,7 +68,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/gender"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -92,18 +89,17 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/female_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female"
+                            android:textSize="@dimen/text_height" />
+
+                        <RadioButton
                             android:id="@+id/male_rb"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Male"
-                            android:textSize="@dimen/text_height" />
-
-                        <RadioButton
-                            android:id="@+id/female_rb"
-                            android:layout_width="wrap_content"
-
-                            android:layout_height="wrap_content"
-                            android:text="Female"
                             android:textSize="@dimen/text_height" />
 
                         <RadioButton
@@ -119,7 +115,6 @@
 
             <!--Address-->
             <TextView
-                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gender"
@@ -135,7 +130,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/address_line"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -159,7 +153,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/city"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -183,7 +176,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/zipcode"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -207,7 +199,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/country"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -231,7 +222,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -256,7 +246,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -276,14 +265,13 @@
 
             <!--Appointment-->
             <TextView
-                android:id="@+id/Appoint_Info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/email"
                 android:layout_marginTop="25dp"
                 android:text="Appointment Information:"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#0000ff"
+                android:textColor="#101010"
                 android:textSize="25dp" />
 
             <!-- Date -->
@@ -293,7 +281,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/date_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -319,7 +306,6 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -348,12 +334,16 @@
                     android:id="@+id/okBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/button_bg"
                     android:text="OK"
-                    android:textSize="@dimen/text_height" />
+                    android:textSize="@dimen/text_height"
+
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/cancelBtn"
+                    android:layout_toStartOf="@+id/cancelBtn" />
 
                 <Button
                     android:id="@+id/cancelBtn"
@@ -364,7 +354,10 @@
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@drawable/button_bg"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
                     android:text="Reset"
                     android:textAllCaps="false"
                     android:textSize="@dimen/text_height" />

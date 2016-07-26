@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/personal_info"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#0000ff"
+                android:textColor="@color/colorBlack1"
                 android:textSize="25dp" />
             <!--Name-->
             <LinearLayout
@@ -257,34 +257,50 @@
                     android:id="@+id/email_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/simple_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
                     android:onClick="submitAppointment"
                     android:text="Email"
-                    android:textSize="@dimen/text_height" />
+                    android:textSize="@dimen/text_height"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/add_db_button"
+                    android:layout_toStartOf="@+id/add_db_button" />
 
                 <Button
                     android:id="@+id/add_db_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/simple_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+
                     android:onClick="addToDatabase"
                     android:text="Add to Db"
-                    android:textSize="@dimen/text_height" />
-            </RelativeLayout>
+                    android:textSize="@dimen/text_height"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/cancel_button"
+                    android:layout_toStartOf="@+id/cancel_button" />
 
-            <Button
-                android:id="@+id/cancel_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/simple_button"
-                android:onClick="goBack"
-                android:text="Cancel"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:textAllCaps="false"
-                android:textSize="@dimen/text_height" />
+                <Button
+                    android:id="@+id/cancel_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:onClick="goBack"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_height"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

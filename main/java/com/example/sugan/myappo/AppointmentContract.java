@@ -12,11 +12,11 @@ public final class AppointmentContract {
         public static final String TABLE_NAME = "entry";
         public static final String COLUMN_NAME_ENTRY_ID = "entry_id";
         public static final String COLUMN_NAME_NAME = "name";
-        public static final String COLUMN_NAME_LASTNAME = "lastname";
+        public static final String COLUMN_NAME_SURNAME = "surname";
         public static final String COLUMN_NAME_GENDER = "gender";
         public static final String COLUMN_NAME_STREET = "street";
         public static final String COLUMN_NAME_CITY = "city";
-        public static final String COLUMN_NAME_ZIP = "zip";
+        public static final String COLUMN_NAME_ZIPCODE = "zipcode";
         public static final String COLUMN_NAME_COUNTRY = "country";
         public static final String COLUMN_NAME_PHONE = "phone";
         public static final String COLUMN_NAME_EMAIL = "email";

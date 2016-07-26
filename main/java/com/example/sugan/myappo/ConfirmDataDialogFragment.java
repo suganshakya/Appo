@@ -23,7 +23,6 @@ public class ConfirmDataDialogFragment extends DialogFragment {
     Appointment appointment;
 
     static ConfirmDataDialogFragment newInstance(Appointment appointment) {
-
         ConfirmDataDialogFragment confirmDataDialogFragment
                 = new ConfirmDataDialogFragment();
         Bundle args = new Bundle();
@@ -41,7 +40,6 @@ public class ConfirmDataDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.confirmation, container);
-
     }
 
     @Override
@@ -49,7 +47,7 @@ public class ConfirmDataDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView nameTV = (TextView) view.findViewById(R.id.name_textView);
-        nameTV.setText(appointment.getName() + " " + appointment.getLastName());
+        nameTV.setText(appointment.getName() + " " + appointment.getSurname());
 
         TextView genderTV = (TextView) view.findViewById(R.id.gender_textView);
         genderTV.setText(appointment.getGender());
@@ -126,12 +124,13 @@ public class ConfirmDataDialogFragment extends DialogFragment {
         ContentValues values = new ContentValues();
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_ENTRY_ID, appointment.get_id());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_NAME, appointment.getName());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_LASTNAME, appointment.getLastName());
+        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_SURNAME, appointment.getSurname());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_GENDER, appointment.getGender());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_STREET, appointment.getStreet());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_CITY, appointment.getCity());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_ZIP, appointment.getZipCode());
+        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_ZIPCODE, appointment.getZipCode());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_COUNTRY, appointment.getCountry());
+        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_PHONE, appointment.getPhone());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_EMAIL, appointment.getEmail());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_DATE, appointment.getDate());
         values.put(AppointmentContract.FeedEntry.COLUMN_NAME_TIME, appointment.getTime());

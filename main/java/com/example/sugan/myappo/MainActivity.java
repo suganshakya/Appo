@@ -8,29 +8,23 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    PagerAdapter pagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
-        PagerAdapter pagerAdapter = new PagerAdapter(fragmentManager);
+        pagerAdapter = new PagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
-
-//        viewPager.addOnPageChangeListener(
-//                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
     }
-
-
-
-
 
 }

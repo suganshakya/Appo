@@ -6,7 +6,7 @@ package com.example.sugan.myappo;
 public class Appointment {
     int _id;
     String name;
-    String lastName;
+    String surname;
     String gender;
     String street;
     String city;
@@ -17,10 +17,10 @@ public class Appointment {
     String date;
     String time;
 
-    public Appointment(int _id, String name, String lastName, String gender, String street, String city, String zipCode, String country, String phone, String email, String date, String time) {
+    public Appointment(int _id, String name, String surname, String gender, String street, String city, String zipCode, String country, String phone, String email, String date, String time) {
         this._id = _id;
         this.name = name;
-        this.lastName = lastName;
+        this.surname = surname;
         this.gender = gender;
         this.street = street;
         this.city = city;
@@ -48,12 +48,12 @@ public class Appointment {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getGender() {
@@ -132,7 +132,7 @@ public class Appointment {
     public String toString() {
         return "Appointment {" +
                 "\n Name : " + name +
-                "\n Last Name : " + lastName +
+                "\n Surname : " + surname +
                 "\n Gender : " + gender +
                 "\n Street : " + street +
                 "\n City : " + city +

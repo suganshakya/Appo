@@ -16,7 +16,6 @@ public class DatabaseContentProvider extends ContentProvider {
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
     SQLiteDatabase database;
 
-
     @Override
     public boolean onCreate() {
         dbHelper = new DbHelper(getContext());

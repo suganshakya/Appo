@@ -19,6 +19,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -152,14 +153,16 @@ public class CreateFragment extends Fragment {
 
     public void onClickSetDate() {
         Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayofMonth) {
-                date = Calendar.getInstance();
-                date.set(year, monthOfYear, dayofMonth);
-                dateET.setText(dateFormatter.format(date.getTime()));
-            }
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayofMonth) {
+                        date = Calendar.getInstance();
+                        date.set(year, monthOfYear, dayofMonth);
+                        dateET.setText(dateFormatter.format(date.getTime()));
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.show();
     }
 
@@ -170,12 +173,12 @@ public class CreateFragment extends Fragment {
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 timeET.setText(hour + ":" + minute);
             }
-        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.show();
     }
 
     public void confirmData() {
-
+        //TODO
         appointment = new Appointment(1, nameET.getText().toString(),
                 surnameET.getText().toString(),
                 gender,

@@ -27,7 +27,6 @@ public class ViewFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,12 +37,13 @@ public class ViewFragment extends Fragment {
         return view;
     }
 
+    public static int dpToPixel(int dp, Context context) {
+        Float scale = context.getResources().getDisplayMetrics().density;
+        return (int) ((float) dp * scale);
+    }
+
     public void showDatabase() {
-
         Context context = getContext();
-
-
-//        DbHelper appointDbHelper = DbHelper.getInstance(context);
         DbHelper appointDbHelper = new DbHelper(getActivity().getApplicationContext());
 
         SQLiteDatabase db = appointDbHelper.getReadableDatabase();
@@ -51,10 +51,20 @@ public class ViewFragment extends Fragment {
             Toast.makeText(context, "No database", Toast.LENGTH_SHORT).show();
             return;
         }
+        // List of Column that we want to display
         String[] projection = {
                 AppointmentContract.FeedEntry._ID,
                 AppointmentContract.FeedEntry.COLUMN_NAME_NAME,
-                AppointmentContract.FeedEntry.COLUMN_NAME_LASTNAME
+                AppointmentContract.FeedEntry.COLUMN_NAME_SURNAME,
+                AppointmentContract.FeedEntry.COLUMN_NAME_GENDER,
+                AppointmentContract.FeedEntry.COLUMN_NAME_STREET,
+                AppointmentContract.FeedEntry.COLUMN_NAME_CITY,
+                AppointmentContract.FeedEntry.COLUMN_NAME_ZIPCODE,
+                AppointmentContract.FeedEntry.COLUMN_NAME_COUNTRY,
+                AppointmentContract.FeedEntry.COLUMN_NAME_PHONE,
+                AppointmentContract.FeedEntry.COLUMN_NAME_EMAIL,
+                AppointmentContract.FeedEntry.COLUMN_NAME_DATE,
+                AppointmentContract.FeedEntry.COLUMN_NAME_TIME
         };
 
         String sortOrder = AppointmentContract.FeedEntry.COLUMN_NAME_NAME;
@@ -66,29 +76,20 @@ public class ViewFragment extends Fragment {
             Toast.makeText(context, "No Result", Toast.LENGTH_SHORT).show();
         }
 
-//        tableLayout.removeView();
-//        tableLayout.removeAllViewsInLayout();   // erase previous results
-        tableLayout.setStretchAllColumns(true);
-//        tableLayout.setShrinkAllColumns(true);
-
         TableRow headRow = new TableRow(context);
 
         headRow.setBackgroundColor(ContextCompat.getColor(context, R.color.colorTableRowHead));
         headRow.setLayoutParams(new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT)
         );
+        int dpToPixelValue = dpToPixel(5,context);
 
-        TextView idTextView = new TextView(context);
-        idTextView.setText("ID");
-        headRow.addView(idTextView);
-
-        TextView nameTextView = new TextView(context);
-        nameTextView.setText("Name");
-        headRow.addView(nameTextView);
-
-        TextView surnameTextView = new TextView(context);
-        surnameTextView.setText("Surname");
-        headRow.addView(surnameTextView);
+        for(int i=0; i< projection.length; ++i){
+            TextView textView = new TextView(context);
+            textView.setPadding(dpToPixelValue, dpToPixelValue, dpToPixelValue, dpToPixelValue);
+            textView.setText(projection[i].toUpperCase());
+            headRow.addView(textView);
+        }
 
         tableLayout.addView(headRow, new TableRow.LayoutParams(
                 TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -103,25 +104,22 @@ public class ViewFragment extends Fragment {
                     tablerow.setBackgroundColor(ContextCompat.getColor(context, R.color.colorTableRowOdd));
                 }
                 count++;
-                tablerow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                tablerow.setLayoutParams(new TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
-                TextView idTextView1 = new TextView(context);
-                idTextView1.setText(cursor.getString(cursor.getColumnIndexOrThrow(AppointmentContract.FeedEntry._ID)));
-                tablerow.addView(idTextView1);
+                for(int i=0; i < projection.length; ++i){
+                    TextView textView = new TextView(context);
+                    textView.setPadding(dpToPixelValue, dpToPixelValue, dpToPixelValue ,dpToPixelValue);
 
-                TextView nameTextView1 = new TextView(context);
-                nameTextView1.setText(cursor.getString(cursor.getColumnIndexOrThrow(AppointmentContract.FeedEntry.COLUMN_NAME_NAME)));
-                tablerow.addView(nameTextView1);
+                    textView.setText(cursor.getString(cursor.getColumnIndexOrThrow(projection[i])));
+                    tablerow.addView(textView);
+                }
 
-                TextView surnameTextView1 = new TextView(context);
-                surnameTextView1.setText(cursor.getString(cursor.getColumnIndexOrThrow(AppointmentContract.FeedEntry.COLUMN_NAME_LASTNAME)));
-                tablerow.addView(surnameTextView1);
-
-                tableLayout.addView(tablerow, new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                tableLayout.addView(tablerow, new TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
             } while (cursor.moveToNext());
         }
         db.close();
     }
-
 }

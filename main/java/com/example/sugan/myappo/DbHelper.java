@@ -1,6 +1,5 @@
 package com.example.sugan.myappo;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -23,11 +22,11 @@ public class DbHelper extends SQLiteOpenHelper {
                     AppointmentContract.FeedEntry._ID + " INTEGER PRIMARY KEY, " +
                     AppointmentContract.FeedEntry.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA +
-                    AppointmentContract.FeedEntry.COLUMN_NAME_LASTNAME + TEXT_TYPE + COMMA +
+                    AppointmentContract.FeedEntry.COLUMN_NAME_SURNAME + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_GENDER + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_STREET + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_CITY + TEXT_TYPE + COMMA +
-                    AppointmentContract.FeedEntry.COLUMN_NAME_ZIP + TEXT_TYPE + COMMA +
+                    AppointmentContract.FeedEntry.COLUMN_NAME_ZIPCODE + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_COUNTRY + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_PHONE + TEXT_TYPE + COMMA +
                     AppointmentContract.FeedEntry.COLUMN_NAME_EMAIL + TEXT_TYPE + COMMA +

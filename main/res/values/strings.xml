@@ -6,7 +6,19 @@
     <string name="create_fragment">Create</string>
     <string name="view_fragment">View</string>
     <string name="edit_fragment">Edit</string>
+
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
 
+    <string-array name="column_name">
+        <item>ID</item>
+        <item>Name</item>
+        <item>Surname</item>
+        <item>Street</item>
+        <item>City</item>
+        <item>Zipcode</item>
+        <item>Country</item>
+        <item>Phone</item>
+        <item>Email</item>
+    </string-array>
 </resources>
