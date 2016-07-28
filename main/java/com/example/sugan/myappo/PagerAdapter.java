@@ -2,9 +2,7 @@ package com.example.sugan.myappo;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 
 /**
  * Created by sugan on 22/07/16.
@@ -23,7 +21,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
-//        FragmentTransaction ft = fm.beginTransaction();
         switch (position) {
             case 0:
                 fragment = new CreateFragment();
@@ -35,7 +32,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 fragment = new EditFragment();
                 break;
         }
-//        ft.detach(fragment).attach(fragment).commit();
         return fragment;
     }
 

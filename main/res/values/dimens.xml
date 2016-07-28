@@ -5,4 +5,5 @@
     <dimen name="small_horizontal_margin">5dp</dimen>
     <dimen name="small_vertical_margin">5dp</dimen>
     <dimen name="text_height">18dp</dimen>
+    <dimen name="edit_text_height">16dp</dimen>
 </resources>

@@ -1,9 +1,7 @@
 package com.example.sugan.myappo;
 
 import android.content.ActivityNotFoundException;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -117,25 +115,7 @@ public class ConfirmDataDialogFragment extends DialogFragment {
     }
 
     public void addToDatabase() {
-//        DbHelper appointDbHelper = DbHelper.getInstance(getContext());
-        DbHelper appointDbHelper = new DbHelper(getActivity().getApplicationContext());
-
-        SQLiteDatabase db = appointDbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_ENTRY_ID, appointment.get_id());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_NAME, appointment.getName());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_SURNAME, appointment.getSurname());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_GENDER, appointment.getGender());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_STREET, appointment.getStreet());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_CITY, appointment.getCity());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_ZIPCODE, appointment.getZipCode());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_COUNTRY, appointment.getCountry());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_PHONE, appointment.getPhone());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_EMAIL, appointment.getEmail());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_DATE, appointment.getDate());
-        values.put(AppointmentContract.FeedEntry.COLUMN_NAME_TIME, appointment.getTime());
-        long newRowId = db.insert(AppointmentContract.FeedEntry.TABLE_NAME, null, values);
-        Toast.makeText(this.getContext(), "Data added", Toast.LENGTH_SHORT).show();
-        db.close();
+        AppointmentDatabaseHelper appointAppointmentDatabaseHelper = AppointmentDatabaseHelper.getInstance(getContext());
+        appointAppointmentDatabaseHelper.addAppointment(appointment);
     }
 }

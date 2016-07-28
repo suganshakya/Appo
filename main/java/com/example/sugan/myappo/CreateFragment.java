@@ -179,7 +179,9 @@ public class CreateFragment extends Fragment {
 
     public void confirmData() {
         //TODO
-        appointment = new Appointment(1, nameET.getText().toString(),
+        appointment = new Appointment(
+                0,
+                nameET.getText().toString(),
                 surnameET.getText().toString(),
                 gender,
                 streetET.getText().toString(),
